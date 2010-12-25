@@ -15,6 +15,7 @@
 pkgname=('intel-composer-compiler-suite')
 true && pkgname=('intel-compiler-base' 'intel-openmp' 'intel-idb' 'intel-ipp' 'intel-mkl' 'intel-sourcechecker' 'intel-tbb' )
 # true && pkgname=('intel-compiler-base' 'intel-tbb' )
+#
 
 pkgrel=3
 
