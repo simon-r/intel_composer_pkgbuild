@@ -395,16 +395,6 @@ package_intel-tbb() {
 	sed -i 's/SUBSTITUTE_INTEL64_ARCH_HERE/\"cc4\.1\.0_libc2\.4_kernel2\.6\.16\.21\"/g' tbbvars.sh
 	chmod a+x tbbvars.sh
 
-# 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/ia32/${_tbb_arch}
-# 	rm tbbvars.csh
-# 	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
-# 	chmod a+x tbbvars.sh
-# 
-# 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/ia64/${_tbb_arch}
-# 	rm tbbvars.csh
-# 	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
-# 	chmod a+x tbbvars.sh
-
 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/${_i_arch}/${_tbb_arch}
 	rm tbbvars.csh
 	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
