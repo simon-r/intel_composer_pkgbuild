@@ -140,7 +140,9 @@ build() {
 	cp ../*.lic ${srcdir}/opt/intel/licenses
 
 	cp ${srcdir}/l_ccompxe_${_i_arch}_${pkgver}/rpms/EULA.txt ${srcdir}/opt/intel
-	
+
+	echo ""
+	echo "-----------------------------------------------------------------------------------"
 	echo "IMPORTANT - READ BEFORE COPYING, INSTALLING, OR USING."
 	echo ""
 	echo "Do not copy, install, or use the \"Materials\" provided under this license agreement (\"Agreement\"), until you"
@@ -150,6 +152,8 @@ build() {
 	echo "Agreement. If you do not agree to the terms of this Agreement, do not copy, install, or use the Materials."
 	echo " - A copy of the EULA has been copied in the PKGBUILD directory; plase read carefully the terms and "
 	echo " - conditions of the Intel license before installing the packages. "
+	echo "-----------------------------------------------------------------------------------"
+	echo ""
 
 	cd ${srcdir}/opt/intel
 	ln -s ./composerxe-${_year}.${_v_a}.${_v_b} composerxe-${_year}
@@ -406,9 +410,13 @@ package_intel-tbb() {
 	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
 	chmod a+x tbbvars.sh
 
-	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/${_not_arch_ia}
+	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/${_not_arch}
 	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/${_not_arch_64}
 	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/${_i_arch}/${_tbb_not_arch}
+
+	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/lib/${_not_arch}
+	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/lib/${_not_arch_64}
+	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/lib/${_i_arch}/${_tbb_not_arch}
 
 	mv ${srcdir}/opt ${pkgdir}
 	
