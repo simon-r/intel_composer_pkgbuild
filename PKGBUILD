@@ -17,12 +17,14 @@ true && pkgname=('intel-compiler-base' 'intel-openmp' 'intel-idb' 'intel-ipp' 'i
 # true && pkgname=('intel-compiler-base' 'intel-tbb' )
 
 
-pkgrel=3
+pkgrel=4
 
 
 _year='2011'
 _v_a='1'
 _v_b='107'
+
+
 
 _icc_ver='12.0'
 _ipp_ver='7.0-1'
@@ -32,6 +34,10 @@ _sourcechecker_ver='12.0-1'
 
 _tbb_ver='3.0-4'
 _tbb_arch='cc4.1.0_libc2.4_kernel2.6.16.21'
+_tbb_not_arch='cc3.4.3_libc2.3.4_kernel2.6.9'
+
+########################### ATTENTION! #####################################################
+ _not_arch_64='ia64'  # if you are using a 64 bit AMD cpu replace 'ia64' with 'intel64' !
 
 _dir_nr='1994'
 
@@ -62,6 +68,9 @@ md5sums=( '0f4fe1f52ceab912dc74a8b766232638'
 	  '0b5904975b2427457df50b7091554c8b'
 	)
 
+
+
+
 #_archive=l_ccompxe${_comp}_p_${pkgver}
 if [ "$CARCH" = "i686" ]; then
     _i_arch='ia32'
@@ -71,7 +80,7 @@ if [ "$CARCH" = "i686" ]; then
 else
     _i_arch='intel64'
     _i_arch2='x86_64'
-    _not_arch='ia32'
+    _not_arch='ia32' 
     md5sums=('c32a355e8dea10530cd84e5d683b2831' ${md5sums[@]} )
 fi
 
@@ -376,25 +385,30 @@ package_intel-tbb() {
 	rm tbbvars.csh
 
 	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
+
 	sed -i 's/SUBSTITUTE_IA32_ARCH_HERE/\"cc4\.1\.0_libc2\.4_kernel2\.6\.16\.21\"/g' tbbvars.sh
 	sed -i 's/SUBSTITUTE_IA64_ARCH_HERE/\"cc4\.1\.0_libc2\.4_kernel2\.6\.16\.21\"/g' tbbvars.sh
 	sed -i 's/SUBSTITUTE_INTEL64_ARCH_HERE/\"cc4\.1\.0_libc2\.4_kernel2\.6\.16\.21\"/g' tbbvars.sh
 	chmod a+x tbbvars.sh
 
-	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/ia32/${_tbb_arch}
+# 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/ia32/${_tbb_arch}
+# 	rm tbbvars.csh
+# 	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
+# 	chmod a+x tbbvars.sh
+# 
+# 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/ia64/${_tbb_arch}
+# 	rm tbbvars.csh
+# 	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
+# 	chmod a+x tbbvars.sh
+
+	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/${_i_arch}/${_tbb_arch}
 	rm tbbvars.csh
 	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
 	chmod a+x tbbvars.sh
 
-	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/ia64/${_tbb_arch}
-	rm tbbvars.csh
-	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
-	chmod a+x tbbvars.sh
-
-	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/intel64/${_tbb_arch}
-	rm tbbvars.csh
-	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
-	chmod a+x tbbvars.sh
+	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/${_not_arch_ia}
+	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/${_not_arch_64}
+	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin/${_i_arch}/${_tbb_not_arch}
 
 	mv ${srcdir}/opt ${pkgdir}
 	
