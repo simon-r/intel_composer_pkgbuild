@@ -373,10 +373,10 @@ package_intel-tbb() {
 	mkdir -p ${srcdir}/etc/ld.so.conf.d
 
 	if [ "$CARCH" = "i686" ]; then
-	  sed 's/<arch>/ia32/' < ../intel-tbb.conf > ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
+	  sed 's/<arch>/${_i_arch}/' < ../intel-tbb.conf > ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
 	  sed -i 's/<tbb_arch>/cc4\.1\.0_libc2\.4_kernel2\.6\.16\.21/' ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
 	else
-	  sed 's/<arch>/intel64/' < ../intel-tbb.conf > ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
+	  sed 's/<arch>/${_i_arch}/' < ../intel-tbb.conf > ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
 	  sed -i 's/<tbb_arch>/cc4\.1\.0_libc2\.4_kernel2\.6\.16\.21/' ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
 	fi
 
