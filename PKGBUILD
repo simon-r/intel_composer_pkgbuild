@@ -79,6 +79,7 @@ if [ "$CARCH" = "i686" ]; then
     md5sums=('a610e0262592e265be14a148d4cf1077' ${md5sums[@]} )
 else
     _i_arch='intel64'
+    _i_arch_tbb='intel64' # if you are using a 64 bit AMD cpu replace 'intel64' with 'ia64' !!!!!!!!!!!
     _i_arch2='x86_64'
     _not_arch='ia32' 
     md5sums=('c32a355e8dea10530cd84e5d683b2831' ${md5sums[@]} )
@@ -376,7 +377,7 @@ package_intel-tbb() {
 	  sed 's/<arch>/${_i_arch}/' < ../intel-tbb.conf > ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
 	  sed -i 's/<tbb_arch>/cc4\.1\.0_libc2\.4_kernel2\.6\.16\.21/' ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
 	else
-	  sed 's/<arch>/${_i_arch}/' < ../intel-tbb.conf > ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
+	  sed 's/<arch>/${_i_arch_tbb}/' < ../intel-tbb.conf > ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
 	  sed -i 's/<tbb_arch>/cc4\.1\.0_libc2\.4_kernel2\.6\.16\.21/' ${srcdir}/etc/ld.so.conf.d/intel-tbb.conf
 	fi
 
