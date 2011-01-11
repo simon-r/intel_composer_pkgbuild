@@ -16,6 +16,8 @@ pkgname=('intel-composer-compiler-suite')
 true && pkgname=('intel-compiler-base' 'intel-openmp' 'intel-idb' 'intel-ipp' 'intel-mkl' 'intel-sourcechecker' 'intel-tbb' )
 # true && pkgname=('intel-compiler-base' 'intel-openmp' )
 
+#options:
+_amd_64=false # if you are using an AMD 64 cpu set this variable to true, leave it to false if you use an ia32, amd32 or intel64
 
 pkgrel=4
 
@@ -36,8 +38,12 @@ _tbb_ver='3.0-4'
 _tbb_arch='cc4.1.0_libc2.4_kernel2.6.16.21'
 _tbb_not_arch='cc3.4.3_libc2.3.4_kernel2.6.9'
 
-########################### ATTENTION! #####################################################
- _not_arch_64='ia64'  # if you are using a 64 bit AMD cpu replace 'ia64' with 'intel64' !
+
+if [ _amd_64 ]; then
+  _not_arch_64='intel64'
+else
+  _not_arch_64='ia64'  # if you are using an AMD 64 cpu replace 'ia64' with 'intel64' !
+fi
 
 _dir_nr='1994'
 
@@ -48,7 +54,7 @@ pkgver=${_year}.${_v_a}.${_v_b}
 url="http://software.intel.com/en-us/articles/non-commercial-software-download/"
 arch=('i686' 'x86_64')
 license=('custom')
-makedepends=('rpmextract' 'sed')
+makedepends=('libarchive' 'sed')
 
 source=('icc.sh' 
 	'intel-compiler-base.conf' 
@@ -79,7 +85,13 @@ if [ "$CARCH" = "i686" ]; then
     md5sums=('a610e0262592e265be14a148d4cf1077' ${md5sums[@]} )
 else
     _i_arch='intel64'
-    _i_arch_tbb='intel64' # if you are using a 64 bit AMD cpu replace 'intel64' with 'ia64' !!!!!!!!!!!
+  
+    if [ _amd_64 ]; then
+      _not_arch_64='ia64' # AMD
+    else
+      _not_arch_64='intel64'  # intel
+    fi
+
     _i_arch2='x86_64'
     _not_arch='ia32' 
     md5sums=('c32a355e8dea10530cd84e5d683b2831' ${md5sums[@]} )
@@ -190,13 +202,13 @@ package_intel-compiler-base() {
 
 	cd ${srcdir}
 	
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerpro-common-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerpro-devel-${_v_b}-${_icc_ver}-${_v_a}.${_i_arch2}.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerpro-vars-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerpro-common-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerpro-devel-${_v_b}-${_icc_ver}-${_v_a}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerpro-vars-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
 	
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerproc-${_v_b}-${_icc_ver}-${_v_a}.${_i_arch2}.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerproc-common-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerproc-devel-${_v_b}-${_icc_ver}-${_v_a}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerproc-${_v_b}-${_icc_ver}-${_v_a}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerproc-common-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerproc-devel-${_v_b}-${_icc_ver}-${_v_a}.${_i_arch2}.rpm
 
 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/bin
 
@@ -234,9 +246,9 @@ package_intel-idb() {
 
 	cd ${srcdir}
 	
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-idb-common-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-idb-${_v_b}-${_icc_ver}-${_v_a}.${_i_arch2}.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-idbcdt-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-idb-common-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-idb-${_v_b}-${_icc_ver}-${_v_a}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-idbcdt-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
 
 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/bin
 	rm idbvars.csh
@@ -272,9 +284,9 @@ package_intel-ipp() {
 
 	cd ${srcdir}
 	
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-common-${_v_b}-${_ipp_ver}.noarch.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-devel-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-common-${_v_b}-${_ipp_ver}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-devel-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
 
 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/ipp/bin
 	rm ippvars.csh
@@ -307,9 +319,9 @@ package_intel-mkl() {
 
 	cd ${srcdir}
 	
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-common-${_v_b}-${_mkl_ver}.noarch.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-devel-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-common-${_v_b}-${_mkl_ver}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-devel-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
 
 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/mkl/bin
 	rm mklvars.csh
@@ -340,8 +352,8 @@ package_intel-openmp() {
 
 	cd ${srcdir}
 	
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-openmp-${_v_b}-${_openmp_ver}.${_i_arch2}.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-openmp-devel-${_v_b}-${_openmp_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-openmp-${_v_b}-${_openmp_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-openmp-devel-${_v_b}-${_openmp_ver}.${_i_arch2}.rpm
 
 	mv ${srcdir}/opt ${pkgdir}
 
@@ -358,8 +370,8 @@ package_intel-sourcechecker() {
 
 	cd ${srcdir}
 	
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-sourcechecker-common-${_v_b}-${_sourcechecker_ver}.noarch.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-sourcechecker-devel-${_v_b}-${_sourcechecker_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-sourcechecker-common-${_v_b}-${_sourcechecker_ver}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-sourcechecker-devel-${_v_b}-${_sourcechecker_ver}.${_i_arch2}.rpm
 
 	mv ${srcdir}/opt ${pkgdir}
 }
@@ -383,8 +395,8 @@ package_intel-tbb() {
 
 	cd ${srcdir}
 	
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-tbb-${_v_b}-${_tbb_ver}.noarch.rpm
-	rpmextract.sh l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-tbb-devel-${_v_b}-${_tbb_ver}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-tbb-${_v_b}-${_tbb_ver}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-tbb-devel-${_v_b}-${_tbb_ver}.noarch.rpm
 
 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/bin
 	rm tbbvars.csh
