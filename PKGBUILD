@@ -168,7 +168,8 @@ build() {
 	echo "-----------------------------------------------------------------------------------"
 	echo ""
 	echo "-----------------------------------------------------------------------------------"
-	echo " This PKGBUILD may requires up to 20 minutes if we use xz as a compressor!"
+	echo " ATTENTION: This PKGBUILD may need up to 20 minutes if we use xz as a compressor!"
+	echo "    - The build of the packages: intel-mkl intel-ipp is particularly slow - "
 	echo "-----------------------------------------------------------------------------------"
 	echo ""
 
