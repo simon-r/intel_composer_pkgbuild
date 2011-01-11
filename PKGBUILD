@@ -167,6 +167,10 @@ build() {
 	echo " - conditions of the Intel license before installing the packages. "
 	echo "-----------------------------------------------------------------------------------"
 	echo ""
+	echo "-----------------------------------------------------------------------------------"
+	echo " This PKGBUILD may requires up to 20 minutes if we use xz as a compressor!"
+	echo "-----------------------------------------------------------------------------------"
+	echo ""
 
 	cd ${srcdir}/opt/intel
 	ln -s ./composerxe-${_year}.${_v_a}.${_v_b} composerxe-${_year}
