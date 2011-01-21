@@ -16,17 +16,22 @@ pkgname=('intel-composer-compiler-suite')
 true && pkgname=('intel-compiler-base' 'intel-openmp' 'intel-idb' 'intel-ipp' 'intel-mkl' 'intel-sourcechecker' 'intel-tbb' )
 # true && pkgname=('intel-compiler-base' 'intel-openmp' )
 
-#options:
-_amd_64=false # if you are using an AMD 64 cpu set this variable to true, leave it to false if you use an ia32, amd32 or intel64
+########################################
+#OPTIONS begin
+# if you are using an AMD 64 cpu set this variable to true, leave it to false if you use an ia32, amd32 or intel64
+_amd_64=false 
 
-pkgrel=4
-
+# set to true if you want to remove documentations and examples form the packages.
+_remove_docs=false
+########################################
 
 _year='2011'
 _v_a='1'
 _v_b='107'
 
+pkgver=${_year}.${_v_a}.${_v_b}
 
+pkgrel=4
 
 _icc_ver='12.0'
 _ipp_ver='7.0-1'
@@ -46,10 +51,6 @@ else
 fi
 
 _dir_nr='1994'
-
-pkgver=${_year}.${_v_a}.${_v_b}
-
-
 
 url="http://software.intel.com/en-us/articles/non-commercial-software-download/"
 arch=('i686' 'x86_64')
@@ -230,6 +231,11 @@ package_intel-compiler-base() {
 	chmod a+x loopprofileviewer.sh
 	rm loopprofileviewer.csh
 
+	if [ ${_remove_docs} ] ; then
+	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Documentations
+	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Samples
+	fi
+
 	mv ${srcdir}/opt ${pkgdir}
 	mv ${srcdir}/etc ${pkgdir}
 }
@@ -264,6 +270,10 @@ package_intel-idb() {
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' idbvars.sh
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' idb
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' idbc
+
+	if [ ${_remove_docs} ] ; then
+	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Documentations
+	fi
 
 	mv ${srcdir}/opt ${pkgdir}
 	
@@ -301,6 +311,10 @@ package_intel-ipp() {
 	rm ippvars_${_i_arch}.csh
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/ipp/g' ippvars_${_i_arch}.sh
 
+	if [ ${_remove_docs} ] ; then
+	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Documentations
+	fi
+
 	mv ${srcdir}/opt ${pkgdir}
 
 	mkdir -p ${pkgdir}/etc
@@ -337,6 +351,12 @@ package_intel-mkl() {
 	cd $_i_arch
 	rm mklvars_${_i_arch}.csh
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/mkl/g' mklvars_${_i_arch}.sh
+
+	if [ ${_remove_docs} ] ; then
+	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Documentations
+	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/mkl/examples
+	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/mkl/benchmarks
+	fi
 
 	mv ${srcdir}/opt ${pkgdir}
 
@@ -425,6 +445,11 @@ package_intel-tbb() {
 	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/lib/${_not_arch}
 	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/lib/${_not_arch_64}
 	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/lib/${_i_arch}/${_tbb_not_arch}
+
+	if [ ${_remove_docs} ] ; then
+	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Documentations
+	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/examples
+	fi
 
 	mv ${srcdir}/opt ${pkgdir}
 	
