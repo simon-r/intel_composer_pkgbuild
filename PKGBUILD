@@ -16,6 +16,8 @@ pkgname=('intel-composer-compiler-suite')
 true && pkgname=('intel-compiler-base' 'intel-openmp' 'intel-idb' 'intel-ipp' 'intel-mkl' 'intel-sourcechecker' 'intel-tbb' )
 # true && pkgname=('intel-compiler-base' 'intel-openmp' )
 
+PKGEXT='.pkg.tar.gz'
+
 ########################################
 #OPTIONS begin
 # if you are using an AMD 64 cpu set this variable to true, leave it to false if you use an ia32, amd32 or intel64
