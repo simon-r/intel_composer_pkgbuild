@@ -89,12 +89,6 @@ if [ "$CARCH" = "i686" ]; then
 else
     _i_arch='intel64'
   
-    if [ $_amd_64 ]; then
-      _not_arch_64='ia64' # AMD
-    else
-      _not_arch_64='intel64'  # intel
-    fi
-
     _i_arch2='x86_64'
     _not_arch='ia32' 
     md5sums=('c32a355e8dea10530cd84e5d683b2831' ${md5sums[@]} )
