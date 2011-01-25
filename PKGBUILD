@@ -46,7 +46,7 @@ _tbb_arch='cc4.1.0_libc2.4_kernel2.6.16.21'
 _tbb_not_arch='cc3.4.3_libc2.3.4_kernel2.6.9'
 
 
-if [ $_amd_64 ]; then
+if $_amd_64 ; then
   _not_arch_64='intel64'
 else
   _not_arch_64='ia64' 
