@@ -227,7 +227,7 @@ package_intel-compiler-base() {
 	chmod a+x loopprofileviewer.sh
 	rm loopprofileviewer.csh
 
-	if [ ${_remove_docs} ] ; then
+	if $_remove_docs ; then
 	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Documentation
 	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Samples
 	fi
@@ -267,7 +267,7 @@ package_intel-idb() {
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' idb
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' idbc
 
-	if [ ${_remove_docs} ] ; then
+	if $_remove_docs ; then
 	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Documentation
 	fi
 
@@ -307,7 +307,7 @@ package_intel-ipp() {
 	rm ippvars_${_i_arch}.csh
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/ipp/g' ippvars_${_i_arch}.sh
 
-	if [ ${_remove_docs} ] ; then
+	if $_remove_docs ; then
 	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Documentation
 	fi
 
@@ -348,7 +348,7 @@ package_intel-mkl() {
 	rm mklvars_${_i_arch}.csh
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/mkl/g' mklvars_${_i_arch}.sh
 
-	if [ ${_remove_docs} ] ; then
+	if $_remove_docs ; then
 	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Documentation
 	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/mkl/examples
 	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/mkl/benchmarks
@@ -442,7 +442,7 @@ package_intel-tbb() {
 	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/lib/${_not_arch_64}
 	rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/lib/${_i_arch}/${_tbb_not_arch}
 
-	if [ ${_remove_docs} ] ; then
+	if $_remove_docs ; then
 	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/Documentation
 	  rm -rf ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/tbb/examples
 	fi
