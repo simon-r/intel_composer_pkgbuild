@@ -30,15 +30,14 @@ _amd_64=false
 _remove_docs=false
 ########################################
 
-_dir_nr='2054'
-
 _year='2011'
 _v_a='2'
 _v_b='137'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
-pkgrel=4
+pkgrel=1
+
 
 _icc_ver='12.0'
 _ipp_ver='7.0-1'
@@ -50,6 +49,7 @@ _tbb_ver='3.0-4'
 _tbb_arch='cc4.1.0_libc2.4_kernel2.6.16.21'
 _tbb_not_arch='cc3.4.3_libc2.3.4_kernel2.6.9'
 
+_dir_nr='2054'
 
 if $_amd_64 ; then
   _not_arch_64='intel64'
