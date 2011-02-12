@@ -40,12 +40,12 @@ pkgrel=1
 
 
 _icc_ver='12.0'
-_ipp_ver='7.0-1'
-_mkl_ver='10.3-1'
-_openmp_ver='12.0-1'
-_sourcechecker_ver='12.0-1'
+_ipp_ver='7.0-2'
+_mkl_ver='10.3-2'
+_openmp_ver='12.0-2'
+_sourcechecker_ver='12.0-2'
 
-_tbb_ver='3.0-4'
+_tbb_ver='3.0-5'
 _tbb_arch='cc4.1.0_libc2.4_kernel2.6.16.21'
 _tbb_not_arch='cc3.4.3_libc2.3.4_kernel2.6.9'
 
@@ -90,13 +90,13 @@ if [ "$CARCH" = "i686" ]; then
     _i_arch='ia32'
     _i_arch2='i486'
     _not_arch='intel64'
-    md5sums=('a610e0262592e265be14a148d4cf1077' ${md5sums[@]} )
+    md5sums=('8134422a842aade88befdbdc1b137feb' ${md5sums[@]} )
 else
     _i_arch='intel64'
   
     _i_arch2='x86_64'
     _not_arch='ia32' 
-    md5sums=('c32a355e8dea10530cd84e5d683b2831' ${md5sums[@]} )
+    md5sums=('9de78c597301483102f4b522c25b2385' ${md5sums[@]} )
 fi
 
 source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/${_dir_nr}/l_ccompxe_${_i_arch}_${pkgver}.tgz" ${source[@]})
