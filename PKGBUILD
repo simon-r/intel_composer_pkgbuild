@@ -12,6 +12,9 @@
 # intel-tbb:            Intel Threading Building Blocks (TBB)
 ###########################################################################
 
+# http://registrationcenter-download.intel.com/akdlm/irc_nas/2054/l_ccompxe_intel64_2011.2.137.tgz
+# http://registrationcenter-download.intel.com/akdlm/irc_nas/2054/l_ccompxe_ia32_2011.2.137.tgz
+
 pkgname=('intel-composer-compiler-suite')
 true && pkgname=('intel-compiler-base' 'intel-openmp' 'intel-idb' 'intel-ipp' 'intel-mkl' 'intel-sourcechecker' 'intel-tbb' )
 # true && pkgname=('intel-compiler-base' 'intel-openmp' )
@@ -27,9 +30,11 @@ _amd_64=false
 _remove_docs=false
 ########################################
 
+_dir_nr='2054'
+
 _year='2011'
-_v_a='1'
-_v_b='107'
+_v_a='2'
+_v_b='137'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
@@ -52,7 +57,7 @@ else
   _not_arch_64='ia64' 
 fi
 
-_dir_nr='1994'
+
 
 url="http://software.intel.com/en-us/articles/non-commercial-software-download/"
 arch=('i686' 'x86_64')
