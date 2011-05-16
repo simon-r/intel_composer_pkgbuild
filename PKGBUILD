@@ -12,9 +12,6 @@
 # intel-tbb:            Intel Threading Building Blocks (TBB)
 ###########################################################################
 
-# http://registrationcenter-download.intel.com/akdlm/irc_nas/2054/l_ccompxe_intel64_2011.2.137.tgz
-# http://registrationcenter-download.intel.com/akdlm/irc_nas/2054/l_ccompxe_ia32_2011.2.137.tgz
-
 pkgname=('intel-composer-compiler-suite')
 true && pkgname=('intel-compiler-base' 'intel-openmp' 'intel-idb' 'intel-ipp' 'intel-mkl' 'intel-sourcechecker' 'intel-tbb' )
 # true && pkgname=('intel-compiler-base' 'intel-openmp' )
