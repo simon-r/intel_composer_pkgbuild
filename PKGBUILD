@@ -143,7 +143,7 @@ build() {
 	  echo ""
 	  echo "-----------------------------------------------------------------------------------"
 	  echo "ERROR: license file not foud!"
-	  echo "To continue this procedure we must obtain an original license file from Intel"
+	  echo "To continue this procedure you must obtain an original license file from Intel"
 	  echo "that must be copied in PKGBUILD directory"
 	  echo "visit:  http://software.intel.com/en-us/articles/non-commercial-software-download/"
 	  echo "-----------------------------------------------------------------------------------"
