@@ -33,7 +33,7 @@ _v_b='191'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
-pkgrel=1
+pkgrel=2
 
 _icc_ver='12.0'
 _ipp_ver='7.0-4'
