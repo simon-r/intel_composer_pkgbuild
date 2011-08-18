@@ -86,13 +86,13 @@ if [ "$CARCH" = "i686" ]; then
     _i_arch='ia32'
     _i_arch2='i486'
     _not_arch='intel64'
-    md5sums=('d1f5e0463be6de605294e54fd7e611e6' ${md5sums[@]} )
+    md5sums=('24bbea122400f6b442fe518fa38fa949' ${md5sums[@]} )
 else
     _i_arch='intel64'
   
     _i_arch2='x86_64'
     _not_arch='ia32' 
-    md5sums=('24bbea122400f6b442fe518fa38fa949' ${md5sums[@]} )
+    md5sums=('d1f5e0463be6de605294e54fd7e611e6' ${md5sums[@]} )
 fi
 
 source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/${_dir_nr}/l_ccompxe_${_i_arch}_${pkgver}.tgz" ${source[@]})
