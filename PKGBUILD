@@ -14,7 +14,7 @@
 
 pkgname=('intel-composer-compiler-suite')
 true && pkgname=('intel-compiler-base' 'intel-openmp' 'intel-idb' 'intel-ipp' 'intel-mkl' 'intel-sourcechecker' 'intel-tbb' )
-# true && pkgname=('intel-compiler-base' 'intel-openmp' )
+#true && pkgname=('intel-compiler-base' 'intel-openmp' 'intel-tbb')
 
 PKGEXT='.pkg.tar.gz'
 
@@ -47,9 +47,9 @@ _tbb_ver='4.0-0'
 _tbb_arch='cc4.1.0_libc2.4_kernel2.6.16.21'
 _tbb_not_arch='cc3.4.3_libc2.3.4_kernel2.6.9'
 
-_composer_xe_dir="opt/intel/composer_xe_${_year}_${_sp}.${_v_a}.${_v_b}"
+_composer_xe_dir="composer_xe_${_year}_${_sp}.${_v_a}.${_v_b}"
 
-_dir_nr='2264'
+_dir_nr='2293'
 
 if $_amd_64 ; then
   _not_arch_64='intel64'
@@ -217,7 +217,7 @@ package_intel-compiler-base() {
 	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerproc-common-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
 	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-compilerproc-devel-${_v_b}-${_icc_ver}-${_v_a}.${_i_arch2}.rpm
 
-	cd ${srcdir}/opt/intel/composer_xe_${_year}_${_sp}.${_v_a}.${_v_b}/bin
+	cd ${srcdir}/opt/intel/${_composer_xe_dir}/bin
 
 	rm uninstall.sh
 	rm *.csh
@@ -262,7 +262,7 @@ package_intel-idb() {
 	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-idb-${_v_b}-${_icc_ver}-${_v_a}.${_i_arch2}.rpm
 	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-idbcdt-${_v_b}-${_icc_ver}-${_v_a}.noarch.rpm
 
-	cd ${srcdir}/opt/intel/composer_xe_${_year}_${_sp}.${_v_a}.${_v_b}/bin
+	cd ${srcdir}/opt/intel/${_composer_xe_dir}/bin
 	rm idbvars.csh
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' idbvars.sh
 
@@ -304,7 +304,7 @@ package_intel-ipp() {
 	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-sp1-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
 	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-sp1-devel-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
 
-	cd ${srcdir}/opt/intel/composer_xe_${_year}_${_sp}.${_v_a}.${_v_b}/ipp/bin
+	cd ${srcdir}/opt/intel/${_composer_xe_dir}/ipp/bin
 	rm ippvars.csh
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/ipp/g' ippvars.sh
 
@@ -313,11 +313,11 @@ package_intel-ipp() {
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/ipp/g' ippvars_${_i_arch}.sh
 
         # remove the unneeded and problematic ipp_minigzip
-        rm -f ${srcdir}/opt/intel/composer_xe_${_year}_${_sp}.${_v_a}.${_v_b}/ipp/interfaces/data-compression/ipp_zlib/bin/${_not_arch}/ipp_minigzip
+        rm -f ${srcdir}/opt/intel/${_composer_xe_dir}/ipp/interfaces/data-compression/ipp_zlib/bin/${_not_arch}/ipp_minigzip
 
 
 	if $_remove_docs ; then
-	  rm -rf ${srcdir}/opt/intel/composer_xe_${_year}_${_sp}.${_v_a}.${_v_b}/Documentation
+	  rm -rf ${srcdir}/opt/intel/${_composer_xe_dir}/Documentation
 	fi
 
 	mv ${srcdir}/opt ${pkgdir}
@@ -347,7 +347,7 @@ package_intel-mkl() {
 	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-sp1-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
 	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-sp1-devel-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
 
-	cd ${srcdir}/opt/intel/composer_xe_${_year}_${_sp}.${_v_a}.${_v_b}/mkl/bin
+	cd ${srcdir}/opt/intel/${_composer_xe_dir}/mkl/bin
 	rm mklvars.csh
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/mkl/g' mklvars.sh
 
@@ -428,7 +428,7 @@ package_intel-tbb() {
 	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-tbb-${_sp}-${_v_b}-${_tbb_ver}.noarch.rpm
 	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-tbb-${_sp}-devel-${_v_b}-${_tbb_ver}.noarch.rpm
 
-	cd ${srcdir}/${_composer_xe_dir}/tbb/bin
+	cd ${srcdir}/opt/intel/${_composer_xe_dir}/tbb/bin
 	rm tbbvars.csh
 
 	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
@@ -438,8 +438,8 @@ package_intel-tbb() {
 	sed -i 's/SUBSTITUTE_INTEL64_ARCH_HERE/\"cc4\.1\.0_libc2\.4_kernel2\.6\.16\.21\"/g' tbbvars.sh
 	chmod a+x tbbvars.sh
 
-	cd ${srcdir}/opt/intel/${_composer_xe_dir}/tbb/bin/${_i_arch}/${_tbb_arch}
-	rm tbbvars.csh
+	cd ${srcdir}/opt/intel/${_composer_xe_dir}/tbb/bin
+	#rm tbbvars.csh
 	sed -i 's/SUBSTITUTE_INSTALL_DIR_HERE/\/opt\/intel\/composerxe\/tbb/g' tbbvars.sh
 	chmod a+x tbbvars.sh
 
