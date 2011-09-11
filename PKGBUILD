@@ -28,20 +28,20 @@ _remove_docs=false
 ########################################
 
 _year='2011'
-_v_a='5'
-_v_b='220'
+_v_a='6'
+_v_b='233'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
 pkgrel=1
 
-_icc_ver='12.0'
-_ipp_ver='7.0-4'
-_mkl_ver='10.3-5'
-_openmp_ver='12.0-5'
-_sourcechecker_ver='12.0-5'
+_icc_ver='12.1'
+_ipp_ver='7.0-5'
+_mkl_ver='10.3-6'
+_openmp_ver='12.1-6'
+_sourcechecker_ver='12.1-6'
 
-_tbb_ver='3.0-8'
+_tbb_ver='4.0-0'
 _tbb_arch='cc4.1.0_libc2.4_kernel2.6.16.21'
 _tbb_not_arch='cc3.4.3_libc2.3.4_kernel2.6.9'
 
@@ -86,13 +86,13 @@ if [ "$CARCH" = "i686" ]; then
     _i_arch='ia32'
     _i_arch2='i486'
     _not_arch='intel64'
-    md5sums=('24bbea122400f6b442fe518fa38fa949' ${md5sums[@]} )
+    md5sums=('4cb13452d669ab477b9818c21c95d169' ${md5sums[@]} )
 else
     _i_arch='intel64'
   
     _i_arch2='x86_64'
     _not_arch='ia32' 
-    md5sums=('d1f5e0463be6de605294e54fd7e611e6' ${md5sums[@]} )
+    md5sums=('0fcd93a4082a79169aa42278bcb9425a' ${md5sums[@]} )
 fi
 
 source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/${_dir_nr}/l_ccompxe_${_i_arch}_${pkgver}.tgz" ${source[@]})
@@ -296,9 +296,9 @@ package_intel-ipp() {
 
 	cd ${srcdir}
 	
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-common-${_v_b}-${_ipp_ver}.noarch.rpm
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-devel-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-sp1-common-${_v_b}-${_ipp_ver}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-sp1-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-sp1-devel-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
 
 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/ipp/bin
 	rm ippvars.csh
@@ -339,9 +339,9 @@ package_intel-mkl() {
 
 	cd ${srcdir}
 	
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-common-${_v_b}-${_mkl_ver}.noarch.rpm
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-devel-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-sp1-common-${_v_b}-${_mkl_ver}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-sp1-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-sp1-devel-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
 
 	cd ${srcdir}/opt/intel/composerxe-${_year}.${_v_a}.${_v_b}/mkl/bin
 	rm mklvars.csh
