@@ -28,8 +28,8 @@ _remove_docs=false
 ########################################
 
 _year='2011'
-_v_a='6'
-_v_b='233'
+_v_a='7'
+_v_b='256'
 
 _sp='sp1'
 
@@ -49,7 +49,7 @@ _tbb_not_arch='cc3.4.3_libc2.3.4_kernel2.6.9'
 
 _composer_xe_dir="composer_xe_${_year}_${_sp}.${_v_a}.${_v_b}"
 
-_dir_nr='2293'
+_dir_nr='2378'
 
 if $_amd_64 ; then
   _not_arch_64='intel64'
