@@ -114,7 +114,7 @@ else
   
     _i_arch2='x86_64'
     _not_arch='ia32' 
-    md5sums=('0fcd93a4082a79169aa42278bcb9425a' ${md5sums[@]} )
+    md5sums=('ac10b3a8ba2ebba5f9e387f390627c35' ${md5sums[@]} )
 fi
 
 source=("http://registrationcenter-download.intel.com/akdlm/irc_nas/${_dir_nr}/l_ccompxe_${_i_arch}_${pkgver}.tgz" ${source[@]})
