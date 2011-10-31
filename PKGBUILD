@@ -108,7 +108,7 @@ if [ "$CARCH" = "i686" ]; then
     _i_arch='ia32'
     _i_arch2='i486'
     _not_arch='intel64'
-    md5sums=('4cb13452d669ab477b9818c21c95d169' ${md5sums[@]} )
+    md5sums=('c6ab793b2e9df70e60c122758996ba2a' ${md5sums[@]} )
 else
     _i_arch='intel64'
   
@@ -163,7 +163,7 @@ build() {
 	  echo "-----------------------------------------------------------------------------------"
 	  echo "ERROR: license file not foud!"
 	  echo "To continue this procedure you must obtain an original license file from Intel"
-	  echo "that must be copied in PKGBUILD directory"
+	  echo "that must be copied in the PKGBUILD directory"
 	  echo "visit:  http://software.intel.com/en-us/articles/non-commercial-software-download/"
 	  echo "-----------------------------------------------------------------------------------"
 	  return 1 ;
@@ -188,8 +188,8 @@ build() {
 	echo "-----------------------------------------------------------------------------------"
 	echo ""
 	echo "-----------------------------------------------------------------------------------"
-	echo " ATTENTION: This PKGBUILD may need up to 20 minutes if we use xz as a compressor!"
-	echo "    - The build of the packages: intel-mkl intel-ipp is particularly slow - "
+	echo " ATTENTION: This PKGBUILD may need up to 20 minutes if you use XZ as a compressor!"
+	echo "    - The build of the packages: intel-mkl and intel-ipp is particularly slow - "
 	echo "-----------------------------------------------------------------------------------"
 	echo ""
 
