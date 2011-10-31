@@ -57,11 +57,11 @@ pkgrel=1
 
 _icc_ver='12.1'
 _ipp_ver='7.0-5'
-_mkl_ver='10.3-6'
-_openmp_ver='12.1-6'
-_sourcechecker_ver='12.1-6'
+_mkl_ver='10.3-7'
+_openmp_ver='12.1-7'
+_sourcechecker_ver='12.1-7'
 
-_tbb_ver='4.0-0'
+_tbb_ver='4.0-1'
 _tbb_arch='cc4.1.0_libc2.4_kernel2.6.16.21'
 _tbb_not_arch='cc3.4.3_libc2.3.4_kernel2.6.9'
 
