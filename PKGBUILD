@@ -318,9 +318,9 @@ package_intel-ipp() {
 
 	cd ${srcdir}
 	
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-sp1-common-${_v_b}-${_ipp_ver}.noarch.rpm
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-sp1-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-sp1-devel-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-${_sp}-common-${_v_b}-${_ipp_ver}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-${_sp}-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-ipp-${_sp}-devel-${_v_b}-${_ipp_ver}.${_i_arch2}.rpm
 
 	cd ${srcdir}/opt/intel/${_composer_xe_dir}/ipp/bin
 	rm ippvars.csh
@@ -361,9 +361,9 @@ package_intel-mkl() {
 
 	cd ${srcdir}
 	
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-sp1-common-${_v_b}-${_mkl_ver}.noarch.rpm
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-sp1-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
-	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-sp1-devel-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-${_sp}-common-${_v_b}-${_mkl_ver}.noarch.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-${_sp}-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
+	bsdtar -xf  l_ccompxe_${_i_arch}_${pkgver}/rpms/intel-mkl-${_sp}-devel-${_v_b}-${_mkl_ver}.${_i_arch2}.rpm
 
 	cd ${srcdir}/opt/intel/${_composer_xe_dir}/mkl/bin
 	rm mklvars.csh
