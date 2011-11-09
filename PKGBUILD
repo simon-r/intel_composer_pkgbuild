@@ -202,7 +202,7 @@ build() {
 
 	ln -s ./composerxe/ipp/ ipp
 	ln -s ./composerxe/compiler/lib/${_i_arch} lib
-	ln -s ./composerxe/dubugger/lib/${_i_arch} debugger_lib
+	ln -s ./composerxe/debugger/lib/${_i_arch} debugger_lib
 	ln -s ./composerxe/man/ man
 	ln -s ./composerxe/mkl/ mkl
 	ln -s ./composerxe/tbb/ tbb
