@@ -53,7 +53,7 @@ _sp='sp1'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
-pkgrel=1
+pkgrel=2
 
 _icc_ver='12.1'
 _ipp_ver='7.0-5'
