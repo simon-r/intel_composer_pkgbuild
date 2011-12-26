@@ -139,7 +139,11 @@ build() {
 	echo "-----------------------------------------------------------------------------"
 	echo "" 
 	echo "-----------------------------------------------------------------------------"
-	echo " Wiki: https://wiki.archlinux.org/index.php/Intel_C%2B%2B"
+	echo " WIKI: https://wiki.archlinux.org/index.php/Intel_C%2B%2B"
+	echo "-----------------------------------------------------------------------------"
+	echo "" 
+	echo "-----------------------------------------------------------------------------"
+	echo " Github: https://github.com/simon-r/intel_composer_pkgbuild" 
 	echo "-----------------------------------------------------------------------------"
 
 	mkdir -p ${srcdir}/etc/profile.d
@@ -176,9 +180,9 @@ build() {
 	mkdir -p ${srcdir}/opt/intel/licenses
 	cp ../*.lic ${srcdir}/opt/intel/licenses
 
-	cp ${srcdir}/l_ccompxe_${_i_arch}_${pkgver}/rpms/license ${srcdir}/opt/intel/license.txt
-	cp ${srcdir}/l_ccompxe_${_i_arch}_${pkgver}/rpms/license_jp ${srcdir}/opt/intel/license_jp.txt
-	cp ${srcdir}/l_ccompxe_${_i_arch}_${pkgver}/rpms/support.txt ${srcdir}/opt/intel/
+	cp ${srcdir}/l_ccompxe_${_i_arch}_${pkgver}/license ${srcdir}/opt/intel/license.txt
+	cp ${srcdir}/l_ccompxe_${_i_arch}_${pkgver}/license_jp ${srcdir}/opt/intel/license_jp.txt
+	cp ${srcdir}/l_ccompxe_${_i_arch}_${pkgver}/support.txt ${srcdir}/opt/intel/
 
 	echo ""
 	echo "-----------------------------------------------------------------------------------"
