@@ -53,7 +53,7 @@ _sp='sp1'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
-pkgrel=2
+pkgrel=3
 
 _icc_ver='12.1'
 _ipp_ver='7.0-6'
@@ -334,11 +334,11 @@ package_intel-ipp() {
 
 	cd ${srcdir}/opt/intel/${_composer_xe_dir}/ipp/bin
 	rm ippvars.csh
-	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/ipp/g' ippvars.sh
+	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ippvars.sh
 
 	cd $_i_arch
 	rm ippvars_${_i_arch}.csh
-	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/ipp/g' ippvars_${_i_arch}.sh
+	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ippvars_${_i_arch}.sh
 
         # remove the unneeded and problematic ipp_minigzip
         rm -f ${srcdir}/opt/intel/${_composer_xe_dir}/ipp/interfaces/data-compression/ipp_zlib/bin/${_not_arch}/ipp_minigzip
@@ -377,13 +377,13 @@ package_intel-mkl() {
 
 	cd ${srcdir}/opt/intel/${_composer_xe_dir}/mkl/bin
 	rm mklvars.csh
-	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/mkl/g' mklvars.sh
+	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' mklvars.sh
 
 	rm -rf ./${_not_arch}
 
 	cd $_i_arch
 	rm mklvars_${_i_arch}.csh
-	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe\/mkl/g' mklvars_${_i_arch}.sh
+	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' mklvars_${_i_arch}.sh
 
 	if $_remove_docs ; then
 	  rm -rf ${srcdir}/opt/intel/${_composer_xe_dir}/Documentation
