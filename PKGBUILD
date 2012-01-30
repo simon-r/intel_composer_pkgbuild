@@ -49,11 +49,15 @@ _year='2011'
 _v_a='8'
 _v_b='273' 
 
+pkgrel=3
+
 _sp='sp1'
 
 pkgver=${_year}.${_v_a}.${_v_b}
 
-pkgrel=3
+
+options=(strip)
+
 
 _icc_ver='12.1'
 _ipp_ver='7.0-6'
