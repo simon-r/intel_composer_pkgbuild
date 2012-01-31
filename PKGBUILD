@@ -344,9 +344,10 @@ package_intel-ipp() {
 	rm ippvars_${_i_arch}.csh
 	sed -i 's/<INSTALLDIR>/\/opt\/intel\/composerxe/g' ippvars_${_i_arch}.sh
 
-        # remove the unneeded and problematic ipp_minigzip
-        rm -f ${srcdir}/opt/intel/${_composer_xe_dir}/ipp/interfaces/data-compression/ipp_zlib/bin/${_not_arch}/ipp_minigzip
-
+        # remove the unneeded and problematic ipp_minigzip and ipp_gzip
+	for _z_dir_name in 'ipp_zlib' 'ipp_gzip' 'ipp_bzip2'  ; do
+	  rm -rf ${srcdir}/opt/intel/${_composer_xe_dir}/ipp/interfaces/data-compression/${_z_dir_name}/bin/${_not_arch}
+	done
 
 	if $_remove_docs ; then
 	  rm -rf ${srcdir}/opt/intel/${_composer_xe_dir}/Documentation
