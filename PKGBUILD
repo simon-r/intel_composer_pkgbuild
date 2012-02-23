@@ -46,10 +46,10 @@ _remove_docs=false
 
 
 _year='2011'
-_v_a='8'
-_v_b='273' 
+_v_a='9'
+_v_b='293' 
 
-pkgrel=4
+pkgrel=1
 
 _sp='sp1'
 
@@ -61,7 +61,7 @@ options=(strip)
 
 _icc_ver='12.1'
 _ipp_ver='7.0-6'
-_mkl_ver='10.3-8'
+_mkl_ver='10.3-9'
 _openmp_ver='12.1-8'
 _sourcechecker_ver='12.1-8'
 
