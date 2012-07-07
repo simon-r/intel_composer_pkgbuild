@@ -46,11 +46,11 @@ _remove_docs=false
 
 
 _year='2011'
-_v_a='9'
-_v_b='293' 
+_v_a='10'
+_v_b='319' 
 
 pkgrel=1
-_dir_nr='2475'
+_dir_nr='2567'
 
 _sp='sp1'
 
@@ -61,12 +61,12 @@ options=(strip)
 
 
 _icc_ver='12.1'
-_ipp_ver='7.0-6'
-_mkl_ver='10.3-9'
-_openmp_ver='12.1-9'
-_sourcechecker_ver='12.1-9'
+_ipp_ver='7.0-7'
+_mkl_ver='10.3-10'
+_openmp_ver='12.1-10'
+_sourcechecker_ver='12.1-10'
 
-_tbb_ver='4.0-3'
+_tbb_ver='4.0-4'
 _tbb_arch='cc4.1.0_libc2.4_kernel2.6.16.21'
 _tbb_not_arch='cc3.4.3_libc2.3.4_kernel2.6.9'
 
